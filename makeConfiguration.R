@@ -2,8 +2,8 @@
 
 # Start with a sample netCDF file.
 # Specify the new project here; 'WECAN' should be changed to the new project.
-NewProject <- 'TI3GER'
-Flight <- 'rf02'  # Specify the model netCDF file
+NewProject <- 'ACCLIP'
+Flight <- 'tf01'  # Specify the model netCDF file
 fname <- sprintf ('%s%s/%s%s.nc', Ranadu::DataDirectory(),
                   NewProject, NewProject, Flight)
 FI <- Ranadu::DataFileInfo (fname)
@@ -22,6 +22,9 @@ PJC130 <- c(
 #  'NOMADSS',
   'FRAPPE')
 PJGV  <- c(
+  'TI3GER',
+  'ASPIRE',
+  'ASPIRE-TEST',
   'MethaneAIR21',
   'SPICULE',
   'MethaneAIR',
