@@ -74,6 +74,7 @@ loadVRPlot <- function (Project, Production = FALSE, Flight, psq) {
   WD <- FI$Variables[grepl ('WD', FI$Variables)]
   WS <- FI$Variables[grepl ('WS', FI$Variables) & !grepl ('FLOW', FI$Variables)]
   AT <- FI$Variables[grepl ('^AT', FI$Variables) & !grepl ('ATTACK', FI$Variables)]
+  AT <- VRPlot[[4]][VRPlot[[4]] %in% AT]  ## keep original order
   DP <- FI$Variables[grepl ('^DP', FI$Variables)]
   EWW <- FI$Variables[grepl ('^EW', FI$Variables)]
   CAVP <- FI$Variables[grepl ('CAVP', FI$Variables)]
@@ -121,6 +122,10 @@ loadVRPlot <- function (Project, Production = FALSE, Flight, psq) {
   chp[[5]] <- c(DP,'ATX', CAVP, EWW, 'QCXC')
   chp[[6]] <- chp[[5]]
   chp[[7]] <- c(chp[[5]], MACH, QC, 'AKRD')
+  V <- names(data)[grepl('LSRINT_VXL', names(data))]
+  if (length(V) > 0) {
+    chp[[7]] <- c(chp[[7]], V)
+  }
   chp[[8]] <- chp[[5]]
   chp[[9]] <- PS
   chp[[10]] <- c(QC,TAS,MACH)
