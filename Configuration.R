@@ -25,7 +25,7 @@ if (Project == 'ACCLIP') {
   VRPlot$PV2 <- c('LATC', 'LONC', 'WDC', 'WSC', 'GGALT', 'PALT', 'PSXC')
   VRPlot$PV3 <- c('ATH1', 'ATH2', 'ATH3', 'ATH4', 'AT_A', 'AT_A2', 'AT_VXL')
   VRPlot$PV4 <- c('ATH1', 'ATH2', 'ATH3', 'ATH4', 'AT_A', 'AT_A2', 'AT_VXL')
-  VRPlot$PV5 <- c('DP_DPR', 'DP_DPL', 'DP_VXL', 'ATX', 'CAVP_DPL', 'CAVP_DPR', 'PSXC', 'QCFC', 'EW_DPL', 'EW_DPR', 'MR', 'EW_VXL', 'QCXC', 'AKRD', 'MACHX', 'CAVP_2DS', 'CAVP_DPL', 'CAVP_DPR', 'PSXC', 'QCXC', 'MACHX', 'AKRD', 'MR')
+  VRPlot$PV5 <- c('DP_DPR', 'DP_DPL', 'DP_VXL', 'ATX', 'CAVP_DPL', 'CAVP_DPR', 'PSXC', 'QCFC', 'SMPLSRINT_VXL', 'EW_DPL', 'EW_DPR', 'MR', 'EW_VXL', 'QCXC', 'AKRD', 'MACHX', 'CAVP_2DS', 'CAVP_DPL', 'CAVP_DPR', 'PSXC', 'QCXC', 'MACHX', 'AKRD', 'MR')
   VRPlot$PV6 <- c('PSFC', 'PS_A', 'PSF', 'PSFF', 'PSFFC', 'PSTF', 'PSX', 'PS_A2', 'PS_VXL', 'PSTFC')
   VRPlot$PV7 <- c('QCFC', 'TASF', 'MACHF', 'QCF', 'QCR', 'QCRC', 'QC_A', 'TASR', 'TASDRY', 'TAS_A', 'MACHR', 'MACH_A', 'MACH_A2', 'QCTF', 'QCTFC')
   VRPlot$PV8 <- c('PSF', 'QCF', 'PS_A', 'QC_A', 'PSTF', 'QCTF')
