@@ -171,7 +171,7 @@ RPlot5 <- function (data, Seq=NA, panl=1) {
     # else {ylm <- c(1.e-2, 100)}
     # if (Trace) {print (sprintf ('ylm=%e %e', ylm[1], ylm[2]))}
     plotWAC (data[, c("Time", c(VEW))], ylab="EWy [hPa]", 
-      logxy='y', ylim = YLMF (1, c(1.e-2, 100)), 
+      logxy='y', ylim = YLMF (1, c(1.e-3, 100)), 
       legend.position='bottom',
       cex.lab=1.5, cex.axis=1.5)
     lines (data$Time, MurphyKoop (data$ATX, data$PSXC), col='cyan', lty=2)
@@ -197,7 +197,7 @@ RPlot5 <- function (data, Seq=NA, panl=1) {
       # if (exists ('panel2ylim')) {ylm <- panel2ylim}
       # else {ylm <- c(0.01, 100)}
       plotWAC (data[, c("Time", MRVAR)], ylab="mixing ratio [g/kg]",
-        logxy='y', ylim = YLMF(2, c(0.01, 100)), cex.lab=1.5, cex.axis=1.5)
+        logxy='y', ylim = YLMF(2, c(1e-3, 100)), cex.lab=1.5, cex.axis=1.5)
     } 
   }
   
