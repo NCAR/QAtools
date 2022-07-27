@@ -1463,8 +1463,7 @@ server <- function(input, output, session) {
     Data <- data ()
     if (Trace) {print (sprintf ('Data: %d columns', ncol (Data)))}
     if (ncol (Data) < 2) {
-      reac$newData==1
-      #reac$newdata <- True
+      reac$newdata <- True
       if (Trace) {print ('error, need data first')}
       return ()
     }
@@ -1989,6 +1988,7 @@ server <- function(input, output, session) {
     #     }
     if (Trace) {print (sprintf ('in data, fname=%s', fname))}
     reac$newdisplay <- TRUE
+    reac$newdata <- FALSE
     if (file.exists(fname)) {
       if (Trace) {
         print(fname)
@@ -2183,7 +2183,7 @@ server <- function(input, output, session) {
         plot (0,0, xlim=c(0,1), ylim=c(0,1), type='n', axes=FALSE, ann=FALSE)
         text (0.5, 0.8, sprintf ('loading requested data file (%s)', fname))
         reac$newdisplay <- TRUE
-        # reac$newdata <- TRUE
+        reac$newdata <- TRUE
         return()
       } 
       ## see global.R functions:
@@ -2349,7 +2349,7 @@ server <- function(input, output, session) {
         plot (0,0, xlim=c(0,1), ylim=c(0,1), type='n', axes=FALSE, ann=FALSE)
         text (0.5, 0.8, sprintf ('loading requested data file (%s)', fname))
         reac$newdisplay <- TRUE
-        # reac$newdata <- TRUE
+        reac$newdata <- TRUE
         return()
       }
       nvpl <- psq[1, input$plot] 
@@ -2460,7 +2460,7 @@ server <- function(input, output, session) {
         plot (0,0, xlim=c(0,1), ylim=c(0,1), type='n', axes=FALSE, ann=FALSE)
         text (0.5, 0.8, sprintf ('loading requested data file (%s)', fname))
         reac$newdisplay <- TRUE
-        # reac$newdata <- TRUE
+        reac$newdata <- TRUE
         return()
       }
       nvpl <- psq[1, input$plot]
@@ -2570,7 +2570,7 @@ server <- function(input, output, session) {
         plot (0,0, xlim=c(0,1), ylim=c(0,1), type='n', axes=FALSE, ann=FALSE)
         text (0.5, 0.8, sprintf ('loading requested data file (%s)', fname))
         reac$newdisplay <- TRUE
-        # reac$newdata <- TRUE
+        reac$newdata <- TRUE
         return()
       }
       nvpl <- psq[1, input$plot]

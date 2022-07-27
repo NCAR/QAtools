@@ -83,11 +83,11 @@ RPlot23 <- function (data, Seq=NA, panl=1) {
   panel14 <- function (data) {
     DF <- data.frame(Time=data$Time)
     DF$VMR_VXL <- data$VMR_VXL
-    DF$H2O_PIC2401 <- data$H2O_PIC2401*10000
+    DF$H2O_PIC2401 <- (data$H2O_PIC2401*(1/1.1155)*10000)
     DF$H2O_ARI <- data$H2O_ARI/1000
     ylm <- range (DF$VMR_VXL, finite=TRUE)
     if ("VMR_VXL" %in% names (data)) {
-        plotWAC(DF, ylim = YLMF (1, ylm), ylab="ppmv")
+        plotWAC(DF, ylim=c(1,1.e5), log="y", ylab="ppmv")
         title('Water Mixing Ratio')
     }
   }
