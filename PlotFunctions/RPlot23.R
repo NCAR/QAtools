@@ -81,21 +81,17 @@ RPlot23 <- function (data, Seq=NA, panl=1) {
   }
   
   panel14 <- function (data) {
-    # if (!is.na(Seq) && (Seq == 1)) {return()}
-    # # 
-    # plot COFLOW and INLETP
-    # if (("COFLOW_AL" %in% names (data)) && any(!is.na(data$COFLOW_AL))) {
-    #   plotWAC(data[, c("Time", "COFLOW_AL")])
-    # }
-    if ("INLETP_AL" %in% names (data)) {
-        plotWAC(data[, c("Time","INLETP_AL")], 
-          ylim = YLMF (4, range(data[, "INLETP_AL"])))
-      title('Inlet Pressure')
+    DF <- data.frame(Time=data$Time)
+    DF$VMR_VXL <- data$VMR_VXL
+    DF$H2O_PIC2401 <- data$H2O_PIC2401*10000
+    DF$H2O_ARI <- data$H2O_ARI/1000
+    ylm <- range (DF$VMR_VXL, finite=TRUE)
+    if ("VMR_VXL" %in% names (data)) {
+        plotWAC(DF, ylim = YLMF (1, ylm), ylab="ppmv")
+        title('Water Mixing Ratio')
     }
-    #legend('bottomright', legend=c("COFLOW", "INLETP"), pch=20, col=c('red', 'blue'))
   }
-  
-  
+
   ###############################################################
   if (shinyDisplay) {
     switch (panl,
