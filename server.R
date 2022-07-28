@@ -288,7 +288,7 @@ server <- function(input, output, session) {
       print (sprintf ('redefined global VRPlot[[%d]]', jp))
       print (PVar)
     }
-    # reac$newdisplay <- TRUE
+    reac$newdisplay <- TRUE
     # VRPlot[[jp]] <<- unique(VRPlot[[jp]], PVar)
     VRPlot[[jp]] <<- PVar
     VRPT(VRPlot)  ## Save it
@@ -1458,8 +1458,8 @@ server <- function(input, output, session) {
       isolate(input$Project),
       isolate (input$typeFlight),
       isolate (input$Flight)))}
-    #     reac$newdisplay
-    #     reac$newdisplay <- TRUE
+         reac$newdisplay
+         reac$newdisplay <- TRUE
     Data <- data ()
     if (Trace) {print (sprintf ('Data: %d columns', ncol (Data)))}
     if (ncol (Data) < 2) {
@@ -2943,7 +2943,7 @@ server <- function(input, output, session) {
         print (sprintf (' need to add variable %s to data', VV))
         print (sprintf (' list of added Variables is:'))
         print (addedVariables)
-        # reac$newdata <- reac$newdata + 1
+        reac$newdata <- reac$newdata + 1
         needAddedVariables <- TRUE
       }
     }

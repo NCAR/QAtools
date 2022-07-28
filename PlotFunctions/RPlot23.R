@@ -78,8 +78,7 @@ RPlot23 <- function (data, Seq=NA, panl=1) {
       title(paste('Carbon Monoxide and Fast Ozone (if available, scaled',
         toString(round(SF,2)),')'))
     }
-  }
-  
+  } 
   panel14 <- function (data) {
     DF <- data.frame(Time=data$Time)
     DF$VMR_VXL <- data$VMR_VXL
@@ -87,11 +86,33 @@ RPlot23 <- function (data, Seq=NA, panl=1) {
     DF$H2O_ARI <- data$H2O_ARI/1000
     ylm <- range (DF$VMR_VXL, finite=TRUE)
     if ("VMR_VXL" %in% names (data)) {
-        plotWAC(DF, ylim=c(1,1.e5), log="y", ylab="ppmv")
-        title('Water Mixing Ratio')
+        plotWAC(DF, ylim= YLMF(3, ylm), ylab="ppmv")
+        title('Water Mixing Ratio: Linear Scale')
     }
   }
-
+  panel15 <- function (data) {
+    DF <- data.frame(Time=data$Time)
+    DF$VMR_VXL <- data$VMR_VXL
+    DF$H2O_PIC2401 <- (data$H2O_PIC2401*(1/1.1155)*10000)
+    DF$H2O_ARI <- data$H2O_ARI/1000
+    ylm <- range (DF$VMR_VXL, finite=TRUE)
+    if ("VMR_VXL" %in% names (data)) {
+        plotWAC(DF, ylim=c(1,1.e5), log="y", ylab="ppmv")
+        title('Water Mixing Ratio: Log Scale')
+    }
+  }
+  panel16 <- function (data) {
+    DF <- data.frame(X=data$VMR_VXL)
+    H2O_PIC2401 <- (data$H2O_PIC2401*(1/1.1155)*10000)
+    H2O_ARI <- data$H2O_ARI/1000
+    ylm <- range (DF$VMR_VXL, finite=TRUE)
+    plot(data$VMR_VXL, H2O_PIC2401, ylim=c(1,1.e5), xlim=c(1,1.e5), log="xy", pch=20, col="darkgreen", ylab="ppmv", xlab="VMR_VXL [ppmv]")
+    points(data$VMR_VXL, H2O_ARI, ylim=c(1,1.e5), xlim=c(1,1.e5), log="xy", pch=20, col="red")
+    abline(coef = c(0,1))
+    title('Water Mixing Ratio: Log Scale')
+    legend("bottomright", legend=c("H2O_PIC2401", "H2O_ARI"), col=c("darkgreen", "red"), pch=20) 
+  }
+   
   ###############################################################
   if (shinyDisplay) {
     switch (panl,
@@ -138,9 +159,8 @@ RPlot23 <- function (data, Seq=NA, panl=1) {
     # layout(matrix(1:4, ncol = 1), widths = 1)
     # op <- par (mar=c(5,5,5,1),oma=c(0,3,0,3))
     # par(cex.lab=2, cex.main=2)
-    layout (matrix(1:4, ncol=1), widths=1, heights=c(5,5,5,6))
-    
-    
+    layout (matrix(1:5, ncol=1), widths=1, heights=c(5,5,5,6))
+     
     if (is.na(Seq) || Seq == 1) {
       setMargins (4)
       panel11 (data)
@@ -153,9 +173,13 @@ RPlot23 <- function (data, Seq=NA, panl=1) {
     }
     
     # END OF FIRST PLOT PAGE
-    # 
     if (is.na(Seq) || Seq == 2) {
-      ## nothing here for now
+      layout (matrix(1:5, ncol=1), widths=1, heights=c(5,5,5,6))
+      setMargins (4)
+      panel15 (data)
+      layout (matrix(1:1, ncol=1), widths=1, heights=c(20,20,20,20))
+      panel16 (data)
+      AddFooter ()
     }
   }
 }
