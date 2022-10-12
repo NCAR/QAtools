@@ -101,17 +101,17 @@ RPlot23 <- function (data, Seq=NA, panl=1) {
         title('Water Mixing Ratio: Log Scale')
     }
   }
-  panel16 <- function (data) {
-    DF <- data.frame(X=data$VMR_VXL)
-    H2O_PIC2401 <- (data$H2O_PIC2401*(1/1.1155)*10000)
-    H2O_ARI <- data$H2O_ARI/1000
-    ylm <- range (DF$VMR_VXL, finite=TRUE)
-    plot(data$VMR_VXL, H2O_PIC2401, ylim=c(1,1.e5), xlim=c(1,1.e5), log="xy", pch=20, col="darkgreen", ylab="ppmv", xlab="VMR_VXL [ppmv]")
-    points(data$VMR_VXL, H2O_ARI, ylim=c(1,1.e5), xlim=c(1,1.e5), log="xy", pch=20, col="red")
-    abline(coef = c(0,1))
-    title('Water Mixing Ratio: Log Scale')
-    legend("bottomright", legend=c("H2O_PIC2401", "H2O_ARI"), col=c("darkgreen", "red"), pch=20) 
-  }
+  #panel16 <- function (data) {
+  #  DF <- data.frame(X=data$VMR_VXL)
+  #  H2O_PIC2401 <- (data$H2O_PIC2401*(1/1.1155)*10000)
+  #  H2O_ARI <- data$H2O_ARI/1000
+  #  ylm <- range (DF$VMR_VXL, finite=TRUE)
+  #  plot(data$VMR_VXL, H2O_PIC2401, ylim=c(1,1.e5), xlim=c(1,1.e5), log="xy", pch=20, col="darkgreen", ylab="ppmv", xlab="VMR_VXL [ppmv]")
+  #  points(data$VMR_VXL, H2O_ARI, ylim=c(1,1.e5), xlim=c(1,1.e5), log="xy", pch=20, col="red")
+  #  abline(coef = c(0,1))
+  #  title('Water Mixing Ratio: Log Scale')
+  #  legend("bottomright", legend=c("H2O_PIC2401", "H2O_ARI"), col=c("darkgreen", "red"), pch=20) 
+  #}
    
   ###############################################################
   if (shinyDisplay) {
@@ -177,9 +177,9 @@ RPlot23 <- function (data, Seq=NA, panl=1) {
       layout (matrix(1:5, ncol=1), widths=1, heights=c(5,5,5,6))
       setMargins (4)
       panel15 (data)
-      layout (matrix(1:1, ncol=1), widths=1, heights=c(20,20,20,20))
-      panel16 (data)
-      AddFooter ()
+      #layout (matrix(1:1, ncol=1), widths=1, heights=c(20,20,20,20))
+      #panel16 (data)
+      #AddFooter ()
     }
   }
 }
