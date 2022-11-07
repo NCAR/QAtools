@@ -2,7 +2,7 @@
 
 # Start with a sample netCDF file.
 # Specify the new project here; 'WECAN' should be changed to the new project.
-NewProject <- 'ACCLIP'
+NewProject <- 'MAIRE'
 Flight <- 'tf01'  # Specify the model netCDF file
 fname <- sprintf ('%s%s/%s%s.nc', Ranadu::DataDirectory(),
                   NewProject, NewProject, Flight)
@@ -67,8 +67,8 @@ if (Platform == 'C130') {
 } else {
   PJ <- PJGV
 }
-rm('VRX')
-rm('VRPlot')
+#rm('VRX')
+#rm('VRPlot')
 for (Project in PJ) {
   if (Project == NewProject) {next}  # when testing, don't use existing config.
   source ('./Configuration.R')  # Must do this repeatedly because VRPlot is loaded
@@ -401,4 +401,4 @@ for (i in 2:length(VRX)) {
     append = TRUE)
 }
 cat('}\n', file = outfile, append = TRUE)
-sink()
+#sink()

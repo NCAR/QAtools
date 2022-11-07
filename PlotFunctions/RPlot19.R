@@ -14,26 +14,27 @@ RPlot19 <- function (data, Seq=NA, panl=1) {
   } 
   
   panel12 <- function (data){
-    vp <- VRPlot$PV19[match(c('THETAE', 'THETAP', 'THETAQ'), VRPlot$PV19)]
+    vp <- VRPlot$PV19[match(c('THETAE', 'THETAP'), VRPlot$PV19)]
     vp <- vp[!is.na(vp)]
     ## check THETAP:
     if ('THETAP' %in% vp) {
       data <- data[!is.na(data$EWX), ]
       data$TP2 <- EquivalentPotentialTemperature (data$PSXC, data$ATX, data$EWX)
     }
-    if ("THETAQ" %in% vp) {
-      if (!("PLWCC" %in% names(data))) {data$PLWCC <- rep (0, nrow(data))}
-      data$TQ2 <- WetEquivalentPotentialTemperature (data$PSXC, data$ATX, data$EWX, data$PLWCC)
-      if (max (data$THETAE, na.rm=TRUE) < Inf) {
-        plotWAC (data[, c('Time', vp)], 
-          ylab="ad. pot. temperatures", 
-          ylim = YLMF (2, range (as.matrix (data[, vp]), finite=TRUE)),
-          legend.position = "top")
-        title (sprintf("mean difference vs recalculated: THETAP-TP2=%.2f THETAQ-TQ2=%.2f", 
-          mean(data$THETAP-data$TP2, na.rm=TRUE),
-          mean(data$THETAQ-data$TQ2, na.rm=TRUE)), cex.main = cexmain)
-      }
-    } else {
+    #if ("THETAQ" %in% vp) {
+    #  if (!("PLWCC" %in% names(data))) {data$PLWCC <- rep (0, nrow(data))}
+    #  data$TQ2 <- WetEquivalentPotentialTemperature (data$PSXC, data$ATX, data$EWX, data$PLWCC)
+    #  if (max (data$THETAE, na.rm=TRUE) < Inf) {
+    #    plotWAC (data[, c('Time', vp)], 
+    #      ylab="ad. pot. temperatures", 
+    #      ylim = YLMF (2, range (as.matrix (data[, vp]), finite=TRUE)),
+    #      legend.position = "top")
+    #    title (sprintf("mean difference vs recalculated: THETAP-TP2=%.2f THETAQ-TQ2=%.2f", 
+    #      mean(data$THETAP-data$TP2, na.rm=TRUE),
+    #      mean(data$THETAQ-data$TQ2, na.rm=TRUE)), cex.main = cexmain)
+    #  }
+    #} 
+    else {
       if (max (data$THETAE, na.rm=TRUE) < Inf) {
         plotWAC (data[, c('Time', vp)], 
           ylab="ad. pot. temperatures", 
