@@ -8,3 +8,5 @@ methods for comparing to past projects, the generation of a standard set of revi
 filter for detecting errors from the INS, and additional tools like methods for adding variables to
 the data files or performing various fits for empirical representations of variables like the angle of
 attack.
+
+Details on deploying QAtools are in the Wiki in this repo.
