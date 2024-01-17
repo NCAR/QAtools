@@ -1,4 +1,6 @@
 # QAtools
+(This page refers to the legacy R based QAtools that was used up until 2022. In 2023 a new Jupyter Notebook based tool called QAtools Notebook was released.)
+
 A Shiny app for data quality assurance testing.
 
 This repository has the content for an extended Shiny app that provides functions to use when reviewing 
